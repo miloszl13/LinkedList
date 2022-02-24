@@ -15,25 +15,22 @@ namespace LinkedList
 
         public void Add(int value)
         {
-            AddNewItem(new Item(value));
-        }
+            Item newItem = new Item(value);
 
-        private void AddNewItem(Item item)
-        {
-            Item newItem = first;
-            first = item;
-            first.Next = newItem;
+            Item tmp = first;
+            first = newItem;
+            first.Next = tmp;
 
             Count++;
         }
-        public int showLastItem()
+        public int Peek()
         {
             if (first != null)
                 return first.Value;
             else
                 throw new Exception("You cant peek the item because List is empty");
         }
-        public void showAllItem()
+        public void Print()
         {
             if(first!=null)
             first.Print();
