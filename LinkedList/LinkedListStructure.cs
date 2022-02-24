@@ -10,7 +10,6 @@ namespace LinkedList
     public class LinkedListStructure
     {
         public Item first { get; set; }
-        public Item next { get; set; }
         public bool IsEmpty => Count == 0;
         public int Count = 0;
 
@@ -26,20 +25,24 @@ namespace LinkedList
             first.Next = newItem;
 
             Count++;
-
-            if (Count == 1)
-            {
-                next = first;
-            }
         }
         public int showLastItem()
         {
-            return first.Value;
+            if (first != null)
+                return first.Value;
+            else
+                throw new Exception("You cant peek the item because List is empty");
         }
         public void showAllItem()
         {
+            if(first!=null)
             first.Print();
+            else
+            {
+                Console.WriteLine("You cant print the list because List is empty");
+            }
         }
+
 
     }
 }

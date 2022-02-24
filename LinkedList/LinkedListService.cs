@@ -16,11 +16,15 @@ namespace LinkedList
         }
         public int Peek()
         {
-            if (_linkedlist.IsEmpty)
+            try
             {
-                throw new InvalidOperationException();
+                return _linkedlist.showLastItem();
             }
-            return _linkedlist.showLastItem();
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return 0;
+            }
         }
         public void Print()
         {
