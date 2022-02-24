@@ -1,6 +1,6 @@
 ﻿using LinkedList;
 
-var stack = new LinkedListStructure<int>();
+var stack = new LinkedListService();
 stack.Add(1);
 stack.Add(2);   
 stack.Add(3);

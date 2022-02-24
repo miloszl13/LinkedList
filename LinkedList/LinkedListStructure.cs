@@ -7,35 +7,38 @@ using System.Threading.Tasks;
 
 namespace LinkedList
 {
-    public class LinkedListStructure<T>:IEnumerable<T>
+    public class LinkedListStructure
     {
-        private readonly List<T> _list=new List<T>();
+        public Item first { get; set; }
+        public Item next { get; set; }
         public bool IsEmpty => Count == 0;
-        public int Count => _list.Count;
-        public void Add(T value)
+        public int Count = 0;
+
+        public void Add(int value)
         {
-            _list.Add(value);
-        }
-        public T Peek()
-        {
-            if (IsEmpty)
-                throw new InvalidOperationException();
-            return _list.Last();
-        }
-        public void Print()
-        {
-            for(int i=_list.Count;i>0;i--)
-                Console.WriteLine(i);
+            AddNewItem(new Item(value));
         }
 
-        public IEnumerator<T> GetEnumerator()
+        private void AddNewItem(Item item)
         {
-            return _list.GetEnumerator();
-        }
+            Item newItem = first;
+            first = item;
+            first.Next = newItem;
 
-        IEnumerator IEnumerable.GetEnumerator()
+            Count++;
+
+            if (Count == 1)
+            {
+                next = first;
+            }
+        }
+        public int showLastItem()
         {
-            return GetEnumerator();
+            return first.Value;
+        }
+        public void showAllItem()
+        {
+            first.Print();
         }
 
     }
